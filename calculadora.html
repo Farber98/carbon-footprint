@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+        <title>Calcula tu huella</title>
+        <link rel="shortcut icon" href="images/eco.ico" type="image/x-icon">  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <div class='container bg-info text-white rounded-lg text-center'>
+            <h1>Calculadora de huella de carbono</h1>
+            <br/>
+            <div style="margin: 10px; padding: 10px; font-size: 18px; color: brown; background: cornsilk; border: 1px solid burlywood;"><h2>&#9432; Gu&iacutea de uso.</h2>
+                <br/>
+                <h3>Ingresa la informacion de tu huella de <b>alcance 1</b></h3>
+                <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+                    <h4>Generadores</h4>
+                    <p>
+                        Especifica la cantidad de generadores, % de rendimiento y horas de uso. <br>
+                        Especifica la cantidad de generadores, % de rendimiento y horas de mantenimiento
+                    </p>
+                    <hr/>
+                    <h4>Refrigeradores</h4>
+                    <p>	Especifica la cantidad de refrigeradores y % de rendimiento</p>
+                </div>
+            <br/>  
+            <br/>
+            <h3>Ingresa la informaci&oacuten de tu huella de <b>alcance 2</b></h3>
+            <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+                <h4>Refrigeradores y servidores</h4>
+                <p>
+                    Especifica la cantidad de refrigeradores y % de rendimiento. <br>
+                    Especifica la cantidad de servidores y % de rendimiento.
+                </p>
+                <hr/>
+                <h4>Otros elementos</h4>
+                <p>
+                    Especifica la cantidad de elementos y horas de utilizaci&oacuten.
+                </p>
+            </div>
+            <br/>
+            <br/>
+            <h4>Visualiza los criterios adoptados, apoyando el mouse en el bot&oacuten <b>criterios</b></h4>
+            <br/>
+            <br/>
+            <h4>Presiona el bot&oacuten <b>calcular huella de carbono</b> y obtene tu huella</h4>
+            </div>
+            <br/>
+            <br/>
+            <h2>Alcance 1</h2>
+            <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+            <h3><img src="images/generator.png" style="width:50px;height:50px; padding:10px">Generadores</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="1860 KW/h y 2.77 KgCO2e">Criterio</span>
+                <input id='cantgen' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='porcgen' type='number' placeholder='% Rendimiento' style="width: 135px;"/>
+                <input id='horagen' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <br/>
+                <br/>
+                <span class="badge badge-warning" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="Mantenimiento 0.5hs por mes por generador">Criterio</span>
+                <input id='cantgenmantenimiento' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='porcgenmantenimiento' type='number' placeholder='% Rendimiento' style="width: 135px;"/>
+            <hr style="border-top: 1px solid white;">
+            <h3><img src="images/refrigerator.png" style="width:50px;height:50px; padding:10px">Refrigeradores</h3>
+               <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="Fuga 675Kg/a y PCG 1430 R134a">Criterio</span>
+                <input id='cantref' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='porcref' type='number' placeholder='% Rendimiento' style="width: 135px;"/>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2><span class="badge badge-success" style="margin-right:10px; font-size:12px" data-toggle="tooltip" data-placement="top" title="0.428 KgCO2e/KWh ">Criterio</span>Alcance 2</h2>
+            <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+            <h3><img src="images/refrigerator.png" style="width:50px;height:50px; padding:10px">Refrigeradores</h3>
+               <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="2373.88 KW/h">Criterio</span>
+                <input id='cantref2' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='porcref2' type='number' placeholder='% Rendimiento' style="width: 135px;"/>
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/server.png" style="width:50px;height:50px; padding:10px">Servidores</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.3KW/h">Criterio</span>
+                <input id='cantserv' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='porcserv' type='number' placeholder='% Rendimiento' style="width: 135px;"/>
+            <hr style="border-top: 1px solid white;">
+            <h3><img src="images/pc.png" style="width:50px;height:50px; padding:10px">PC e impresoras <img src="images/printer.png" style="width:50px;height:50px; padding:10px"></h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.735 KW/h">Criterio</span>
+                <input id='cantpc' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='horapc' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/portatil.png" style="width:50px;height:50px; padding:10px">Portatiles, monitores y extractores <img src="images/extractor.png" style="width:50px;height:50px; padding:10px"></h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.022 KW/h">Criterio</span>
+                <input id='cantportatil' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='horaportatil' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/tv.png" style="width:50px;height:50px; padding:10px">Televisores LED</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.09 KW/h">Criterio</span>
+                <input id='canttv' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='horatv' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/camera.png" style="width:50px;height:50px; padding:10px">C&aacutemaras, detectores de humo y telefonos <img src="images/telephone.png" style="width:50px;height:50px; padding:10px"></h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.0052 KW/h">Criterio</span>
+                <input id='canttel' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='horatel' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/water.png" style="width:50px;height:50px; padding:10px">Dispensers de agua</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.25 KW/h">Criterio</span>
+                <input id='cantdisp' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                
+                <input id='horadisp' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/led.png" style="width:50px;height:50px; padding:10px">Iluminaci&oacuten LED</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.015 KW/h">Criterio</span>
+                <input id='cantilum' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='horailum' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+                <hr style="border-top: 1px solid white;">
+            <h3><img src="images/air.png" style="width:50px;height:50px; padding:10px">Aire acondicionado</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="1.15 KW/h">Criterio</span>
+                <input id='cantaire' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='horaaire' type='number' placeholder='Horas utilizacion' style="width: 140px;"  />
+            </div>
+            <br/>
+            <br/>
+            <button class='btn-secondary rounded-sm' onclick='calcCO2()'>Calcular huella de carbono</button>
+          <br/>
+          <br/>
+        </div>
+        <br/>
+        <div class='container text-center'>
+           <h2>Tu huella de alcance 1 anual es:</h2>
+            <h1 id='resultadoalcance1' class='bg-success rounded-lg'></h1>
+            <h3>KgCO2e</h3>
+        </div>
+        <br/>
+        <div class='container text-center'>
+           <h2>Tu huella de alcance 2 anual es:</h2>
+            <h1 id='resultadoalcance2' class='bg-success rounded-lg'></h1>
+            <h3>KgCO2e</h3>
+        </div>
+        <br/>
+        <div class='container text-center'>
+           <h2>Tu huella anual es:</h2>
+            <h1 id='resultadofinal' class='bg-success rounded-lg'></h1>
+            <h3>KgCO2e</h3>
+        </div>
+        <br/>
+        <br/>
+        <div class='container text-center'>
+            <h2><a href="paneles.html" target="_blank">¿Queres reducir tu huella con paneles solares?</a></h2>
+        </div>
+        
+        <br/>
+        <script>
+            {{/* Ejecucion de Tooltips */}}
+            $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+            });
+
+            {{/* Relaciono js con html */}}
+
+            {{/* Alcance 1 */}}
+            var cantgen = document.getElementById("cantgen")
+            var porcgen = document.getElementById("porcgen")
+            var horagen = document.getElementById("horagen")
+            var cantgenmantenimiento = document.getElementById("cantgenmantenimiento")
+            var porcgenmantenimiento = document.getElementById("porcgenmantenimiento")
+            var cantref = document.getElementById("cantref")
+            var porcref = document.getElementById("porcref")
+            
+            var resultadofinal = document.getElementById("resultadofinal");
+            var resultadoalcance1 = document.getElementById("resultadoalcance1");
+            var resultadoalcance2 = document.getElementById("resultadoalcance2");
+            var cantserv = document.getElementById("cantserv")
+            var porcserv = document.getElementById("porcserv")
+            
+
+            {{/* Alcance 2 */}}
+            var cantref2 = document.getElementById("cantref2")
+            var porcref2 = document.getElementById("porcref2")
+            var cantserv = document.getElementById("cantserv")
+            var porcserv = document.getElementById("porcserv")
+            var cantpc = document.getElementById("cantpc")
+            var horapc = document.getElementById("horapc")
+            var cantportatil = document.getElementById("cantportatil")
+            var horaportatil = document.getElementById("horaportatil")
+            var canttv = document.getElementById("canttv")
+            var horatv = document.getElementById("horatv")
+            var canttel = document.getElementById("canttel")
+            var horatel = document.getElementById("horatel")
+            var cantdisp = document.getElementById("cantdisp")
+            var horadisp = document.getElementById("horadisp")
+            var cantilum = document.getElementById("cantilum")
+            var horailum = document.getElementById("horailum")
+            var cantaire = document.getElementById("cantaire")
+            var horaaire = document.getElementById("horaaire")
+            var cantcam = document.getElementById("cantcam")
+            var horacam = document.getElementById("horacam")
+            var cantsens = document.getElementById("cantsens")
+            var horasens = document.getElementById("horasens")
+
+            {{/* Resultados */}}
+            var resultadofinal = document.getElementById("resultadofinal");
+            var resultadoalcance1 = document.getElementById("resultadoalcance1");
+            var resultadoalcance2 = document.getElementById("resultadoalcance2");
+
+
+            function calcCO2() {
+
+                {{/* ALCANCE 1 */}}
+                {{/* Calculo generadores */}} 
+                var cantGen = cantgen.value
+                var porcGen = porcgen.value / 100;
+                var horaGen = horagen.value
+                var cantGenMantenimiento = cantgenmantenimiento.value
+                var porcGenMantenimiento = porcgenmantenimiento.value / 100
+                var hcGen =  2.77
+                var mantenimiento = cantGenMantenimiento * porcGenMantenimiento * 0.5 * 12 * 1860 * 0.3 * hcGen
+                var resultGen = mantenimiento + (cantGen * 1860 * porcGen * horaGen * hcGen * 0.3)// Mantenimiento 0.5 hs por mes y genera 1860kw/h  y 03.3 factor de conversion kw a l
+                
+                {{/* Calculo refrigeradores */}}
+                var cantRef = cantref.value
+                var porcRef = porcref.value / 100
+                var pcgRef = 1430 
+                var resultRef = cantRef * 225 * porcRef * pcgRef // 1 anio
+
+
+                var resultadoAlcance1 =  resultGen + resultRef
+                
+                {{/* ALCANCE 2 */}}
+                var feElect = 0.428 
+                
+                {{/* Calculo refrigeradores */}}
+                var cantRef2 = cantref2.value
+                var porcRef2 = porcref2.value / 100; 
+                //675 ton c/u = 922.5 kw/h
+                var resultRef2 = cantRef2 * porcRef2 * 922.5 * feElect
+
+                {{/* Calculo servidores */}}
+                var cantServ = cantserv.value
+                var porcServ = porcserv.value / 100; 
+                var resultServ =  cantServ * 0.3 * porcServ * 8760 * feElect 
+                // Para 5500 0.3 100% debe dar 6186312
+                
+
+                {{/* Calculo PC e impresoras */}}
+                var cantPc = cantpc.value
+                var horaPc = horapc.value 
+                var resultPc =  cantPc * 0.735 * horaPc * feElect 
+                
+                {{/* Calculo portatil  */}}
+                var cantPortatil = cantportatil.value
+                var horaPortatil = horaportatil.value 
+                var resultPortatil =  cantPortatil * 0.022 * horaPortatil * feElect
+
+                {{/* Calculo tv */}}
+                var cantTv = canttv.value
+                var horaTv = horatv.value 
+                var resultTv =  cantTv * 0.09 * horaTv * feElect
+
+                {{/* Calculo telefono */}}
+                var cantTel = canttel.value
+                var horaTel = horatel.value 
+                var resultTel =  cantTel * 0.0052 * horaTel * feElect
+
+                {{/* Calculo dispenser */}}
+                var cantDisp = cantdisp.value
+                var horaDisp = horadisp.value 
+                var resultDisp =  cantDisp * 0.25 * horaDisp * feElect
+
+                {{/* Calculo iluminacion */}}
+                var cantIlum = cantilum.value
+                var horaIlum = horailum.value 
+                var resultIlum =  cantIlum * 0.011 * horaIlum * feElect
+
+                {{/* Calculo aire */}}
+                var cantAire = cantaire.value
+                var horaAire = horaaire.value 
+                var resultAire =  cantAire * 1.15 * horaAire * feElect
+
+                var resultadoAlcance2 = resultRef2 + resultServ + resultPc + resultPortatil + resultTv + resultTel + resultDisp + resultIlum + resultAire 
+
+                {{/* Calculo resultado final */}}
+                resultadoFinal = resultadoAlcance1 + resultadoAlcance2
+                
+                resultadoAlcance1 = resultadoAlcance1.toFixed(2);
+                resultadoAlcance2 = resultadoAlcance2.toFixed(2);
+                resultadoFinal = resultadoFinal.toFixed(2);
+                console.log('Resultado final: ' + resultadoFinal);
+                resultadoalcance1.innerHTML = resultadoAlcance1;
+                resultadoalcance2.innerHTML = resultadoAlcance2;
+                resultadofinal.innerHTML = resultadoFinal;
+                
+            }
+        </script>
+    </body>
+</html>

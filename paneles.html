@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mitiga tu huella</title>
+        <link rel="shortcut icon" href="images/eco.ico" type="image/x-icon">  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <div class='container bg-info text-white rounded-lg text-center'>
+            <h1>Mitiga tu huella</h1>
+            <br/>
+            <div style="margin: 10px; padding: 10px; font-size: 18px; color: brown; background: cornsilk; border: 1px solid burlywood;"><h2>&#9432; Gu&iacutea de uso.</h2>
+                <br/>
+                <h3>Mitigaci&oacuten</h3>
+                <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+                    <h4>Paneles solares</h4>
+                    <p>Especifica la cantidad de paneles solares, potencia y horas pico de sol.</p>
+            </div>
+            <br/>
+            <h4>Presiona el bot&oacuten <b>calcular mitigaci&oacuten</b></h4>
+            </div>
+            <br/>
+            <br/>
+            <h2>Mitigaci&oacuten</h2>
+            <div class='container-fluid' style="border:2px solid #cecece; padding:20px">
+                <h3><img src="images/panel.png" style="width:50px;height:50px; padding:10px; position:relative; bottom:5px;">Paneles</h3>
+                <span class="badge badge-success" style="margin-right:10px" data-toggle="tooltip" data-placement="top" title="0.428 KgCO2e/a y factor de seguridad 0.9">Criterio</span>
+                <input id='cantpan' type='number' placeholder='Cantidad' style="width: 90px;"/>
+                <input id='potpan' type='number' placeholder='Potencia por panel' style="width: 160px;" data-toggle="tooltip" data-placement="top" title="En KW/h"/>
+                <input id='hpspan' type='number' placeholder='Horas pico de sol' style="width: 155px;"/>
+            </div>
+            <br/>
+            <button class='btn-secondary rounded-sm' onclick='calcReduccion()'>Calcular mitigaci&oacuten</button>
+          <br/>
+          <br/>
+        </div>
+        <br/>
+        <div class='container text-center'>
+           <h2>Huella de carbono anual reducida:</h2>
+            <h1 id='resultado' class='bg-success rounded-lg'></h1>
+            <h3>KgCO2e</h3>
+        </div>
+        <br/>
+        <br/>
+        <script>
+            {{/* Ejecucion de Tooltips */}}
+            $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+            });
+
+            {{/* Relaciono js con html */}}
+            var cantpan = document.getElementById("cantpan")
+            var potpan = document.getElementById("potpan")
+            var hpspan = document.getElementById("hpspan")
+            var resultado = document.getElementById("resultado");
+            
+            
+
+            function calcReduccion() {
+                
+                {{/* Calculos paneles */}}
+                var cantPan = cantpan.value
+                var potPan = potpan.value
+                var hpsPan = hpspan.value
+
+                var erre = cantPan * potPan * hpsPan * 0.9 * 365 //Por 1 anio 
+
+                var resultadoFinal = 0.428 * erre
+
+                console.log('Resultado final: ' + resultadoFinal);
+                resultadoFinal = resultadoFinal.toFixed(2)
+                resultado.innerHTML = resultadoFinal;
+                
+            }
+        </script>
+    </body>
+</html>
